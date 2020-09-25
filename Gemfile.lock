@@ -1,0 +1,24 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mini_portile2 (2.4.0)
+    nio4r (2.5.4)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
+    open-uri (0.1.0)
+    puma (5.0.0)
+      nio4r (~> 2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nokogiri
+  open-uri
+  puma
+
+RUBY VERSION
+   ruby 2.6.5p114
+
+BUNDLED WITH
+   1.17.2
