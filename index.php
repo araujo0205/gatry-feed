@@ -37,7 +37,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
             echo "<item>\n";
             echo '  <title>' . $post->innerHtml . ' [R$ ' . $preco . ']</title>';
-            echo '  <link>' . $post->getAttribute . '</link>';
+            echo '  <link>' . $post->getAttribute('href') . '</link>';
             echo '  <pubDate>' . $data_criado . '</pubDate>';
             echo ' <description>' . $comentario . '</description>';
             echo "  <guid isPermaLink='false'>" . $id . '</guid>';
