@@ -1,1 +1,1 @@
-web: ruby myapp.rb
+web: vendor/bin/heroku-php-apache2

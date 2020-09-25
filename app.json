@@ -1,8 +1,7 @@
 {
   "name": "Start on Heroku: Ruby",
   "description": "A barebones Rails app, which can easily be deployed to Heroku",
-  "image": "heroku/ruby",
   "repository": "https://github.com/araujo0205/gatry-feed",
-  "keywords": ["ruby"],
+  "keywords": ["php"],
   "addons": []
 }
