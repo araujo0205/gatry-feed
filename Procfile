@@ -1,1 +1,1 @@
-web: ruby gatry.rb
+web: ruby myapp.rb
