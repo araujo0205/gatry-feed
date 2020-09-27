@@ -4,6 +4,8 @@
 require 'vendor/autoload.php';
 use PHPHtmlParser\Dom;
 
+header('content-type: application/rss+xml; charset=UTF-8');
+
 $dom = new Dom;
 
 echo '<?xml version="1.0" encoding="UTF-8"?>
@@ -16,8 +18,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
   >
   <channel>
-        <title>Gatry</title>
-        <link>"https://gatry.com"</link>
+        <title>Gatry - Promoções</title>
+        <atom:link href="https://gatry-feed.herokuapp.com/" rel="self" type="application/rss+xml" />
+        <link>https://gatry.com</link>
         <description>Promocoes</description>
         <language>pt-BR</language>
     <generator>"Code in Ruby"</generator>';
@@ -29,7 +32,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
             $id          = $item->getAttribute('id');
             $post        = $item->find('.informacoes a')[0];
             $preco       = $item->find('.informacoes span[itemprop=price]')[0]->innerHtml;
-            $data_criado = $item->find('.informacoes span.data_postado')[0]->getAttribute('title');
+            $data_criado = date_create_from_format('d/m/Y * H:i', $item->find('.informacoes span.data_postado')[0]->getAttribute('title'));
             $comentario  = '';
             if ($item->find('.informacoes p.preco.comentario')[0]) {
                 $comentario  = $item->find('.informacoes p.preco.comentario')[0]->innerhtml;
@@ -38,7 +41,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
             echo "<item>\n";
             echo '  <title>' . $post->innerHtml . ' [R$ ' . $preco . ']</title>';
             echo '  <link>' . $post->getAttribute('href') . '</link>';
-            echo '  <pubDate>' . $data_criado . '</pubDate>';
+            echo '  <pubDate>' . $data_criado->format('r') . '</pubDate>';
             echo ' <description>' . $comentario . '</description>';
             echo "  <guid isPermaLink='false'>" . $id . '</guid>';
             echo "</item>\n";
